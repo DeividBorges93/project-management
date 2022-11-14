@@ -1,0 +1,19 @@
+{
+  "conventionalCommits.scopes": [
+    "config",
+    "package",
+    "banco_de_dados",
+    "jwt",
+    "error",
+    "user",
+    "schemas",
+    "joi",
+    "model",
+    "service",
+    "controller",
+    "route",
+    "password",
+    ".gitignore",
+    "convencionalCommits"
+  ]
+}
