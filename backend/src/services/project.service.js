@@ -67,8 +67,29 @@ const getProjectById = async (id) => {
   };
 };
 
+const updateProject = async (req) => {
+  const { username } = req.headers;
+  const { title, zipCode, cost, done, deadline } = req.body;
+
+  const projectUpdated = await Project.update({
+    title,
+    zipCode,
+    cost,
+    done,
+    deadline
+  }, 
+  { 
+    where: { username },
+    returning: true,
+    plain: true
+  });
+
+  return projectUpdated[1];
+};
+
 module.exports = {
   createProject,
   getProjectByUsername,
-  getProjectById
+  getProjectById,
+  updateProject
 };
