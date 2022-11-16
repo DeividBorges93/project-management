@@ -33,8 +33,16 @@ const createProject = async (req) => {
   });
 
   return result;
+};
+
+const getProjectByUsername = async (req) => {
+  const { username } = req.headers
+  userProjects = Project.findAll({ where: { username }});
+
+  return userProjects;
 }
 
 module.exports = {
   createProject,
+  getProjectByUsername
 };
