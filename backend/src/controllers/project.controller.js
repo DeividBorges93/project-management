@@ -20,10 +20,24 @@ const getProjectByUsername = async (req, res, next) => {
   };
 
   return res.status(200).json(result);
+};
 
-}
+const getProjectById = async (req, res, next) => {
+  const { id } = req.params;
+  const result = await projectService.getProjectById(id);
+
+  if (result.code) {
+    next(result);
+    return;
+  };
+
+  return res.status(200).json(result);
+};
 
 module.exports = {
   createProject,
-  getProjectByUsername
+  getProjectByUsername,
+  getProjectById
 };
+
+
