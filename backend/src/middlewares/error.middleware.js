@@ -1,4 +1,5 @@
-const errorMiddleware = (error, _req, res) => {
+// eslint-disable-next-line no-unused-vars
+const errorMiddleware = (error, _req, res, _next) => {
   if (error.code) {
     console.log(error.message);
 
