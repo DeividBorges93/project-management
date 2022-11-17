@@ -69,13 +69,12 @@ const getProjectById = async (id) => {
 
 const updateProject = async (req) => {
   const { username } = req.headers;
-  const { title, zipCode, cost, done, deadline } = req.body;
+  const { title, zipCode, cost, deadline } = req.body;
 
   const projectUpdated = await Project.update({
     title,
     zipCode,
     cost,
-    done,
     deadline
   }, 
   { 
@@ -87,9 +86,28 @@ const updateProject = async (req) => {
   return projectUpdated[1];
 };
 
+const updateDoneProject = async (req) => {
+  const { username } = req.headers;
+  const { id } = req.params;
+  const { done } = req.body;
+  
+  if (!id) return { code: 400, message: 'ID not found' };
+
+  if (!username) return { code: 400, message: 'username not found'};
+  
+  await Project.update({
+    done,
+  },
+  {
+    where: { username, id },
+  });
+
+};
+
 module.exports = {
   createProject,
   getProjectByUsername,
   getProjectById,
-  updateProject
+  updateProject,
+  updateDoneProject
 };
