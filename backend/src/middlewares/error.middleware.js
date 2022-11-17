@@ -3,7 +3,7 @@ const errorMiddleware = (error, _req, res, _next) => {
 
     console.log(error.message);
 
-    return res.status(error.code).json({ message: error.message });
+    return res.status(error.code).json(error.message);
   }
 
   return res.status(500).json(error.message);
