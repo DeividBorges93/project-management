@@ -54,6 +54,21 @@ const updateDoneProject = async (req, res, next) => {
   };
 
   return res.status(200).json('Projeto Finalizado com sucesso');
+};
+
+const deleteProject = async (req, res, next) => {
+  const { id } = req.params;
+  
+  const result = await projectService.deleteProject(req);
+  
+  if (result.code) {
+    next(result);
+    return;
+  };
+  
+  if (result === 0) return res.status(400).json(`Não foi possível deletar o projeto com ID ${id}`);
+  
+  return res.status(202).json(`Projeto com o ID ${id}, deletado com sucesso.`);
 }
 
 module.exports = {
@@ -61,7 +76,8 @@ module.exports = {
   getProjectByUsername,
   getProjectById,
   updateProject,
-  updateDoneProject
+  updateDoneProject,
+  deleteProject
 };
 
 
