@@ -101,13 +101,24 @@ const updateDoneProject = async (req) => {
   {
     where: { username, id },
   });
-
 };
+
+const deleteProject = async (req) => {
+  const { username } = req.headers;
+  const { id } = req.params;
+
+  const deleted = await Project.destroy({ where: { id, username } });
+
+  console.log(deleted, 'deleted');
+
+  return deleted;
+}
 
 module.exports = {
   createProject,
   getProjectByUsername,
   getProjectById,
   updateProject,
-  updateDoneProject
+  updateDoneProject,
+  deleteProject
 };
