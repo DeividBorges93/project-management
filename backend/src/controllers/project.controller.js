@@ -6,9 +6,9 @@ const createProject = async (req, res, next) => {
   if (result.code) {
     next(result);
     return;
-  };
+  }
 
-  return res.status(201).json(result);
+  res.status(201).json(result);
 };
 
 const getProjectByUsername = async (req, res, next) => {
@@ -17,9 +17,9 @@ const getProjectByUsername = async (req, res, next) => {
   if (result.code) {
     next(result);
     return;
-  };
+  }
 
-  return res.status(200).json(result);
+  res.status(200).json(result);
 };
 
 const getProjectById = async (req, res, next) => {
@@ -29,9 +29,9 @@ const getProjectById = async (req, res, next) => {
   if (result.code) {
     next(result);
     return;
-  };
+  }
 
-  return res.status(200).json(result);
+  res.status(200).json(result);
 };
 
 const updateProject = async (req, res, next) => {
@@ -40,9 +40,9 @@ const updateProject = async (req, res, next) => {
   if (result.code) {
     next(result);
     return;
-  };
+  }
 
-  return res.status(200).json(result);
+  res.status(200).json(result);
 };
 
 const updateDoneProject = async (req, res, next) => {
@@ -51,25 +51,25 @@ const updateDoneProject = async (req, res, next) => {
   if (result.code) {
     next(result);
     return;
-  };
+  }
 
-  return res.status(200).json('Projeto Finalizado com sucesso');
+  res.status(200).json('Projeto Finalizado com sucesso');
 };
 
 const deleteProject = async (req, res, next) => {
   const { id } = req.params;
-  
+
   const result = await projectService.deleteProject(req);
-  
+
   if (result.code) {
     next(result);
     return;
-  };
-  
-  if (result === 0) return res.status(400).json(`Não foi possível deletar o projeto com ID ${id}`);
-  
-  return res.status(202).json(`Projeto com o ID ${id}, deletado com sucesso.`);
-}
+  }
+
+  if (result === 0) res.status(400).json(`Não foi possível deletar o projeto com ID ${id}`);
+
+  res.status(202).json(`Projeto com o ID ${id}, deletado com sucesso.`);
+};
 
 module.exports = {
   createProject,
@@ -77,7 +77,5 @@ module.exports = {
   getProjectById,
   updateProject,
   updateDoneProject,
-  deleteProject
+  deleteProject,
 };
-
-

@@ -7,13 +7,13 @@ module.exports = Joi.object({
     .messages({
       'any.required': '400|"name" is required',
       'string.min': '400|"name" length must be at least 8 characters long',
-  }),
+    }),
   username: Joi.string()
-  .required()
-  .min(8)
-  .messages({
-    'any.required': '400|"username" is required',
-    'string.min': '400|"username" length must be at least 8 characters long',
+    .required()
+    .min(8)
+    .messages({
+      'any.required': '400|"username" is required',
+      'string.min': '400|"username" length must be at least 8 characters long',
 
-  }),
+    }),
 });

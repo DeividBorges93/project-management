@@ -9,14 +9,13 @@ const createUser = async (req) => {
   const { username } = req.headers;
   const { id } = req.params;
   const password = passwordGenerator(8);
-  
 
   if (error) {
     const [code, message] = error.message.split('|');
     return { code, message };
   }
 
-  const usernameAlreadyExists = await User.findOne({ where: { username }});
+  const usernameAlreadyExists = await User.findOne({ where: { username } });
 
   if (usernameAlreadyExists) return { code: 409, message: 'User already registered' };
 
@@ -40,5 +39,5 @@ const getUserById = async (id) => {
 module.exports = {
   createUser,
   getAllUsers,
-  getUserById
+  getUserById,
 };

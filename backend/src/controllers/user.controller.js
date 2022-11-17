@@ -8,7 +8,7 @@ const createUser = async (req, res, next) => {
     return;
   }
 
-  return res.status(201).json({ token: result });
+  res.status(201).json({ token: result });
 };
 
 const getAllUsers = async (_req, res) => {
@@ -26,11 +26,11 @@ const getUserById = async (req, res, next) => {
     return;
   }
 
-  return res.status(200).json(result);
-}
+  res.status(200).json(result);
+};
 
 module.exports = {
   createUser,
   getAllUsers,
-  getUserById
+  getUserById,
 };

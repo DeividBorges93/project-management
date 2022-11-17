@@ -30,7 +30,7 @@ const Attributes = {
   username: {
     type: DataTypes.STRING,
     allowNull: false,
-    foreignKey: true
+    foreignKey: true,
   },
   createdAt: {
     type: DataTypes.DATE,
@@ -40,8 +40,7 @@ const Attributes = {
     type: DataTypes.DATE,
     allowNull: false,
   },
-
-}
+};
 
 module.exports = (sequelize) => {
   const Project = sequelize.define(
@@ -58,5 +57,5 @@ module.exports = (sequelize) => {
     Project.belongsTo(models.User, { foreignKey: 'username', as: 'user' });
   };
 
-  return Project
+  return Project;
 };

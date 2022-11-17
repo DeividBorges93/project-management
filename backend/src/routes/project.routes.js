@@ -10,7 +10,7 @@ const {
   getProjectById,
   updateProject,
   updateDoneProject,
-  deleteProject
+  deleteProject,
 } = require('../controllers/project.controller');
 
 router.post('/project', auth, createProject);

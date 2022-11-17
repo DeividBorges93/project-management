@@ -1,7 +1,6 @@
 require('dotenv/config');
-const middlewareError = require ('../middlewares/error.middleware');
+const middlewareError = require('../middlewares/error.middleware');
 const { userRoutes, projectRoutes } = require('../routes');
-
 
 const port = process.env.API_PORT;
 

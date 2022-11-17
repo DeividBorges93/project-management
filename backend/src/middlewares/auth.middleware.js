@@ -6,7 +6,7 @@ module.exports = async (req, res, next) => {
     const { authorization } = req.headers;
     const SECRET = process.env.JWT_SECRET;
     if (!authorization) return res.status(401).json({ message: 'Token not found' });
-    
+
     const decoded = jwt.verify(authorization, SECRET);
 
     req.tokenData = decoded.data;
@@ -17,6 +17,6 @@ module.exports = async (req, res, next) => {
       return res.status(401).json({ message: 'Expired or invalid token' });
     }
 
-    next(error);
+    return next(error);
   }
 };
