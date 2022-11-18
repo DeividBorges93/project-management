@@ -1,4 +1,3 @@
-const jwtGenerator = require('../helpers/jwtGenerator');
 const { User } = require('../models');
 const userSchemas = require('../schemas/user.schemas');
 const passwordGenerator = require('../helpers/passwordGenerator');
@@ -7,7 +6,6 @@ const createUser = async (req) => {
   const { error } = userSchemas.validate(req.body);
   const { name } = req.body;
   const { username } = req.headers;
-  const { id } = req.params;
   const password = passwordGenerator(8);
 
   if (error) {
@@ -19,11 +17,9 @@ const createUser = async (req) => {
 
   if (usernameAlreadyExists) return { code: 409, message: 'User already registered' };
 
-  await User.create({ name, password, username });
+  const user = await User.create({ name, password, username });
 
-  const token = jwtGenerator({ username, id });
-
-  return token;
+  return user;
 };
 
 const getAllUsers = async () => User.findAll({ attributes: { exclude: ['password'] } });
