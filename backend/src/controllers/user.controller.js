@@ -8,7 +8,9 @@ const createUser = async (req, res, next) => {
     return;
   }
 
-  res.status(201).json({ token: result });
+  const { username } = result;
+
+  res.status(201).json(`user ${username} successfully registered`);
 };
 
 const getAllUsers = async (_req, res) => {
