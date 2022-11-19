@@ -12,9 +12,9 @@
 ## Features
 
 - [x] Criação de usuário
-- [] Efetuar login
+- [ ] Efetuar login
 - [x] Criar, ler, atualizar e deletar projetos
-- [] Marcar projetos como lido
+- [ ] Marcar projetos como lido
 
 ## Pré-requisitos para rodar a aplicação Backend
 
@@ -60,7 +60,8 @@ Corpo da requisição:
 
 {
 "name": "Deivid Borges",
-"username": "deivid.borges2"
+"username": "deivid.borges2",
+"password": "minhasenha"
 }
 ~~~
 

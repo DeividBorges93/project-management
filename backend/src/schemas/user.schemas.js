@@ -16,4 +16,12 @@ module.exports = Joi.object({
       'string.min': '400|"username" length must be at least 8 characters long',
 
     }),
+    password: Joi.string()
+    .required()
+    .min(8)
+    .messages({
+      'any.required': '400|"password" is required',
+      'string.string': '400|"password" length must be at least 8 characters long',
+
+    }),
 });

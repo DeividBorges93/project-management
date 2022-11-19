@@ -4,9 +4,9 @@ const passwordGenerator = require('../helpers/passwordGenerator');
 
 const createUser = async (req) => {
   const { error } = userSchemas.validate(req.body);
-  const { name } = req.body;
+  const { name, password } = req.body;
   const { username } = req.headers;
-  const password = passwordGenerator(8);
+  const hashPassword = passwordGenerator(password, 8);
 
   if (error) {
     const [code, message] = error.message.split('|');
@@ -17,15 +17,15 @@ const createUser = async (req) => {
 
   if (usernameAlreadyExists) return { code: 409, message: 'User already registered' };
 
-  const user = await User.create({ name, password, username });
+  const user = await User.create({ name, password: hashPassword, username });
 
   return user;
 };
 
-const getAllUsers = async () => User.findAll({ attributes: { exclude: ['password'] } });
+const getAllUsers = async () => User.findAll({ attributes: { exclude: ['hashPassword'] } });
 
 const getUserById = async (id) => {
-  const user = await User.findByPk(id, { attributes: { exclude: ['password'] } });
+  const user = await User.findByPk(id, { attributes: { exclude: ['hashPassword'] } });
 
   if (!user) return { code: 404, message: 'User does not exists' };
 
