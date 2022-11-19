@@ -149,3 +149,46 @@
 .has-value + .focus-input::before{
   width: 100%;
 }
+
+.container-register-form-btn {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 13px;
+}
+
+.register-form-btn {
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 6px azure;
+  
+  background-image: -webkit-linear-gradient(to right, #1d2d4a 0%, #ff5806  51%, #1d2d4a  100%);
+  background-image: -o-linear-gradient(to right, #1d2d4a 0%, #ff5806  51%, #1d2d4a  100%);
+  background-image: -moz-linear-gradient(to right, #1d2d4a 0%, #ff5806  51%, #1d2d4a  100%);
+  background-image: linear-gradient(to right, #1d2d4a 0%, #ff5806  51%, #1d2d4a  100%);
+
+  display: flex;
+  font-size: 15px;
+  padding: 15px 45px;
+  width: 100%;
+  height: 50px;
+  line-height: 1.2;
+
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: azure;            
+  box-shadow: 0 0 6px azure;
+
+  border-radius: 10px;
+  display: block;
+}
+
+.register-form-btn:hover {
+  cursor: pointer;
+  box-shadow: 0 0 9px azure;
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
+}
