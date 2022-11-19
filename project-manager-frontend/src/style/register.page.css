@@ -192,3 +192,26 @@
   color: #fff;
   text-decoration: none;
 }
+
+.text-ja-possui-conta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 50px;
+}
+
+.text {
+  font-size: 24px;
+  color: azure;
+  line-height: 1.5;
+  padding-right: 5px;
+  text-decoration: none;
+}
+
+.link-login-page {
+  font-size: 24px;
+  color: #1d2d4a;
+  line-height: 1.5;
+  text-decoration: none;
+}
