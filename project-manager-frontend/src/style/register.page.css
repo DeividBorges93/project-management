@@ -36,4 +36,21 @@
   box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.2);
 }
 
+.form-register {
+  width: 100%;
+}
 
+.form-register-title {
+  display: block;
+  font-size: 30px;
+  color: azure;
+  margin-bottom: 20px;
+
+  line-height: 1.2;
+  text-align: center;
+}
+
+.form-register-title img {
+  width: 120px;
+  border-radius: 50%;
+}
