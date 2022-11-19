@@ -17,6 +17,7 @@
     "convencionalCommits",
     "eslint",
     "pages",
-    "style"
+    "style",
+    "seed"
   ]
 }
