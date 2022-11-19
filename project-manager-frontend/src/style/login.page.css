@@ -1,0 +1,217 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat",sans-serif;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.container-login {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+
+  padding: 15px;
+
+  background-color: #ff5806;
+}
+
+.wrap-login {
+  background-color: rgb(18, 20, 19);;
+  width: 40%;
+  border-radius: 10px;
+  border: #1d2d4a inset 1px ;
+
+  overflow: hidden;
+  padding: 77px 55px 33px 55px;
+
+  box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+.form-login {
+  width: 100%;
+}
+
+.form-login-title {
+  display: block;
+  font-size: 30px;
+  color: azure;
+  margin-bottom: 20px;
+
+  line-height: 1.2;
+  text-align: center;
+}
+
+.form-login-title img {
+  width: 120px;
+  border-radius: 50%;
+}
+
+.wrap-login-input {
+  width: 100%;
+  position: relative;
+  border-bottom: 2px solid rgb(139, 144, 144);
+  margin-bottom: 37px;
+}
+
+.input {
+  font-size: 15px;
+  color: azure;
+  line-height: 1.2;
+  border: none;
+  display: block;
+
+  width: 100%;
+  height: 45px;
+
+  background-color: transparent;
+
+  padding: 0 5px;
+}
+
+.input:focus {
+  outline: 0;
+}
+
+.input:focus + .focus-input::after {
+  top: -15px;
+}
+
+.input:focus + .focus-input::before {
+  width: 100%;
+}
+
+.focus-input {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  top: 0;
+  left: 0;
+
+  pointer-events: none;
+  color: rgb(139, 144, 144);
+}
+
+.focus-input::before {
+  content: "";
+  display: block;
+  position: absolute;
+
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.45s;
+  -moz-transition: all 0.45s;
+
+  background: -webkit-linear-gradient(to left, #ff5806, #1d2d4a);
+  background: -o-linear-gradient(to left, #ff5806, #1d2d4a);
+  background: -moz-linear-gradient(to left, #ff5806, #1d2d4a);
+  background: linear-gradient(to left, #ff5806, #1d2d4a);
+}
+
+.focus-input::after {
+  font-size: 15px;
+  color: #999999;
+  line-height: 1.2;
+
+  content: attr(data-placeholder);
+
+  display: block;
+  width: 100%;
+  position: absolute;
+  top: 16px;
+  left: 0px;
+
+  padding-left: 5px;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.45s;
+  -moz-transition: all 0.45s;
+}
+
+.has-value + .focus-input::after{
+  top: -15px;
+}
+
+.has-value + .focus-input::before{
+  width: 100%;
+}
+
+.container-login-form-btn {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 13px;
+}
+
+.login-form-btn {
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 6px azure;
+  
+  background-image: -webkit-linear-gradient(to right, #ff5806 0%, #1d2d4a  51%, #ff5806  100%);
+  background-image: -o-linear-gradient(to right, #ff5806 0%, #1d2d4a  51%, #ff5806  100%);
+  background-image: -moz-linear-gradient(to right, #ff5806 0%, #1d2d4a  51%, #ff5806  100%);
+  background-image: linear-gradient(to right, #ff5806 0%, #1d2d4a  51%, #ff5806  100%);
+
+  display: flex;
+  font-size: 15px;
+  padding: 15px 45px;
+  width: 100%;
+  height: 50px;
+  line-height: 1.2;
+
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: azure;            
+  box-shadow: 0 0 6px azure;
+
+  border-radius: 10px;
+  display: block;
+}
+
+.login-form-btn:hover {
+  cursor: pointer;
+  box-shadow: 0 0 9px azure;
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
+}
+
+.text-nao-possui-conta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 50px;
+}
+
+.text {
+  font-size: 24px;
+  color: azure;
+  line-height: 1.5;
+  padding-right: 5px;
+  text-decoration: none;
+}
+
+.link-register-page {
+  font-size: 24px;
+  color: rgb(75, 216, 216);
+  line-height: 1.5;
+  text-decoration: none;
+}
