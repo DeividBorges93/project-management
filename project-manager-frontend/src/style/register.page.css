@@ -23,3 +23,17 @@
 
   background-color: #1d2d4a;
 }
+
+.wrap-register {
+  background-color: rgb(18, 20, 19);
+  width: 40%;
+  border-radius: 10px;
+  border: #ff5806 inset 1px ;
+
+  overflow: hidden;
+  padding: 77px 55px 33px 55px;
+
+  box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+
