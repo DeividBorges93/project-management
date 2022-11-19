@@ -4,3 +4,8 @@
   box-sizing: border-box;
   font-family: "Montserrat",sans-serif;
 }
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
