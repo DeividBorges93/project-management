@@ -16,10 +16,11 @@ export default function Register() {
   
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
-
+  const [password, setPassword] = useState("");
 
   const refName = useRef();
   const refUsername = useRef();
+  const refPassword = useRef();
   
   const createUser = async (data, options) => {
     axios.post(url, { ...data }, options)
@@ -40,6 +41,8 @@ export default function Register() {
     const data = {
       [refName.current.name]: refName.current.value,
       [refUsername.current.name]: refUsername.current.value,
+      [refPassword.current.name]: refPassword.current.value,
+
     };
   
     const options = {
@@ -91,6 +94,18 @@ export default function Register() {
               onChange={e => setUsername(e.target.value)}
             />
             <span className="focus-input" data-placeholder="Username"></span>
+          </div>
+          <div className="wrap-register-input">
+            <input
+              type="password"
+              className={ password !== "" ? 'has-value input' : 'input' }
+              id="password"
+              name="password"
+              ref={refPassword}
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+            />
+            <span className="focus-input" data-placeholder="Password"></span>
           </div>
           <div className='container-register-form-btn'>
             <button
