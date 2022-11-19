@@ -54,3 +54,10 @@
   width: 120px;
   border-radius: 50%;
 }
+
+.wrap-register-input {
+  width: 100%;
+  position: relative;
+  border-bottom: 2px solid rgb(139, 144, 144);
+  margin-bottom: 37px;
+}
