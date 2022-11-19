@@ -61,3 +61,30 @@
   border-bottom: 2px solid rgb(139, 144, 144);
   margin-bottom: 37px;
 }
+
+.input {
+  font-size: 15px;
+  color: #fff;
+  line-height: 1.2;
+  border: none;
+  display: block;
+
+  width: 100%;
+  height: 45px;
+
+  background-color: transparent;
+
+  padding: 0 5px;
+}
+
+.input:focus {
+  outline: 0;
+}
+
+.input:focus + .focus-input::after {
+  top: -15px;
+}
+
+.input:focus + .focus-input::before {
+  width: 100%;
+}
