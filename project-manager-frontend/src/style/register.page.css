@@ -141,3 +141,11 @@
   -o-transition: all 0.45s;
   -moz-transition: all 0.45s;
 }
+
+.has-value + .focus-input::after{
+  top: -15px;
+}
+
+.has-value + .focus-input::before{
+  width: 100%;
+}
