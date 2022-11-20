@@ -26,8 +26,8 @@ const login = async (req) => {
   if (!passwordMatch) return { code: 400, message: 'Invalid password'};
 
   const token = jwtGenerator({ username, id });
-
-  req.headers.authorization = token;
+  
+  req.headers.Authorization = token;
 
   return findUser;
 };

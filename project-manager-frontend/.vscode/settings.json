@@ -1,0 +1,12 @@
+{
+  "conventionalCommits.scopes": [
+    "react",
+    "package",
+    "pages",
+    "routes",
+    "utils",
+    "assests",
+    "style",
+    "app"
+  ]
+}
