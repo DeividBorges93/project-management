@@ -44,6 +44,9 @@ const createProject = async (req) => {
 
 const getProjectByUsername = async (req) => {
   const { username } = req.headers;
+
+  if (!username ) return { code: 400, message: 'Username is invalid'};
+  
   const userProjects = Project.findAll({ where: { username } });
 
   return userProjects;
