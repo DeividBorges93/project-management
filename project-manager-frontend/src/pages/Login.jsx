@@ -5,9 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import constants from '../utils/constants.util';
 import logoPicure from '../assets/projectManagerLogoGif.gif';
 
-
 const { status_code: { OK } } = constants;
-
 
 export default function Login() {
   const navigate = useNavigate();
@@ -20,10 +18,13 @@ export default function Login() {
   const refUsername = useRef();
   const refPassword = useRef();
 
-  const login = async (data, options) => {
-    axios.post(url, {...data}, options)
+  const login = async (user, options) => {
+    axios.post(url, user, options)
     .then((response) => {
       if (response.status === OK) {
+        localStorage.setItem('username', JSON.stringify(user.username));
+        localStorage.setItem('token', JSON.stringify(response.data.token));
+
         navigate('/projects');
       };
     })
@@ -33,7 +34,7 @@ export default function Login() {
   const getValues = async (event) => {
     event.preventDefault();
 
-    const data = {
+    const user = {
       [refUsername.current.name]: refUsername.current.value,
       [refPassword.current.name]: refPassword.current.value,
     };
@@ -44,7 +45,8 @@ export default function Login() {
       }
     }
 
-    login(data, options);
+
+    login(user, options);
   }
 
   return (
