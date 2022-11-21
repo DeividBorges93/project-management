@@ -3,7 +3,7 @@
  - Permite o login de usuário.
 
 ## Intuito da aplicação
-  - Desenvolver um CRUD em node.js
+  - Criar um sistema para gerenciamento de proejtos e cadastro e login de usuários.
 
 ## Features
 
