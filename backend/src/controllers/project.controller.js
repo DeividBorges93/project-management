@@ -30,7 +30,7 @@ const getProjectById = async (req, res, next) => {
     next(result);
     return;
   }
-
+  console.log(result, 'result projectcontroller');
   res.status(200).json(result);
 };
 
