@@ -74,7 +74,7 @@ export default function Register() {
           <div className="wrap-register-input">
             <input
               type="text"
-              className={ name !== "" ? 'has-value input' : 'input' }
+              className={ name !== "" ? 'has-value input' : 'input-register' }
               id="name"
               name="name"
               ref={refName}
@@ -86,7 +86,7 @@ export default function Register() {
           <div className="wrap-register-input">
             <input
               type="text"
-              className={ username !== "" ? 'has-value input' : 'input' }
+              className={ username !== "" ? 'has-value input-register' : 'input-register' }
               id="username"
               name="username"
               ref={refUsername}
@@ -98,7 +98,7 @@ export default function Register() {
           <div className="wrap-register-input">
             <input
               type="password"
-              className={ password !== "" ? 'has-value input' : 'input' }
+              className={ password !== "" ? 'has-value input-register' : 'input-register' }
               id="password"
               name="password"
               ref={refPassword}
