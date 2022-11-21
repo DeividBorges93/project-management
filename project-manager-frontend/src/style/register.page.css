@@ -62,7 +62,7 @@
   margin-bottom: 37px;
 }
 
-.input {
+.input-register {
   font-size: 15px;
   color: #fff;
   line-height: 1.2;
@@ -77,15 +77,15 @@
   padding: 0 5px;
 }
 
-.input:focus {
+.input-register:focus {
   outline: 0;
 }
 
-.input:focus + .focus-input::after {
+.input-register:focus + .focus-input::after {
   top: -15px;
 }
 
-.input:focus + .focus-input::before {
+.input-register:focus + .focus-input::before {
   width: 100%;
 }
 

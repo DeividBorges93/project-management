@@ -62,7 +62,7 @@ export default function Login() {
           <div className="wrap-login-input">
             <input
               type="text"
-              className={ username !== "" ? 'has-value input' : 'input' }
+              className={ username !== "" ? 'has-value input-login' : 'input-login' }
               id="username"
               name="username"
               ref={refUsername}
@@ -74,7 +74,7 @@ export default function Login() {
           <div className="wrap-login-input">
             <input
               type="password"
-              className={ password !== "" ? 'has-value input' : 'input' }
+              className={ password !== "" ? 'has-value input-login' : 'input-login' }
               id="password"
               name="password"
               ref={refPassword}
