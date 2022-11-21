@@ -1,53 +1,45 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import '../style/projectsByUsername.page.css';
+import RowProject from '../components/RowProject';
 
 export default function ProjectsByUsername() {
   
   const username = JSON.parse(localStorage.getItem('username'));
   const Authorization = JSON.parse(localStorage.getItem('token'));
 
-  const api_url = 'http://localhost:3001/projects';
+  const projects_url = 'http://localhost:3001/projects';
 
   const [projects, setProjects] = useState([]);
 
   useEffect( () => {
-    axios.get(api_url, { headers: { username, Authorization } })
+    axios.get(projects_url, { headers: { username, Authorization } })
     .then((response) => { 
       setProjects(response.data);
     })
     .catch((err) => console.log(err.message));
-    }, [username, Authorization]);
-
+    }, []);
 
   return (
-    <div className="container">
-      <div className="container-projects">
-        <div className="wrap-projects">
-          <h1 className='projects-title'>Projetos</h1>
-          <table>
+    <div className="container-up">
+      <div className="container-uprojects">
+        <div className="wrap-uprojects">
+          <h1 className='uprojects-title'>Projetos</h1>
+          <table className='uprojects-table'>
             <thead>
             <tr>
               <th>ID</th>
               <th>Título</th>
               <th>CEP</th>
               <th>Custo</th>
+              <th>Prazo</th>
               <th>Finalizado</th>
             </tr>
             </thead>
             <tbody>
-              {projects.map((project, i) => {
-                const { cost, done, id, title, zipCode } = project;
-                return (
-                  <tr key={i}>
-                    <td>{id}</td>
-                    <td>{title}</td>
-                    <td>{zipCode}</td>
-                    <td>{cost}</td>
-                    <td>{done ? 'Finalizado' : 'Não finalizado'}</td>
-
-                  </tr>
-                )
-              })}
+              {projects?.map((project, i) => (
+                <RowProject project={project} key={i} />
+              ))}
             </tbody>
           </table>
         </div>

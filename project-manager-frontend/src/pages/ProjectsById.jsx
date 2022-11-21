@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import '../style/projectsByUsername.page.css';
 
 export default function ProjectByid() {
 
@@ -8,24 +9,19 @@ export default function ProjectByid() {
   const Authorization = JSON.parse(localStorage.getItem('token'));
   const { id } = useParams();
 
-  const api_url = 'http://localhost:3001/projects';
+  const api_url = `http://localhost:3001/project/${id}`;
 
-  const [project, setProject] = useState();
-
+  const [project, setProject] = useState({});
+  
   useEffect( () => {
+    
     axios.get(api_url, { headers: { username, Authorization } })
     .then((response) => {
-      console.log(response.data, 'data');
-
       setProject(response.data);
     })
     .catch((err) => console.log(err.message));
-  }, [api_url, username, Authorization]);
+  }, []);
 
-  console.log(project, 'project');
-
-  const { title, cost, address: { cidade, estado }, deadline, done } = project;
-  
   return (
     <div className="container">
       <div className="container-projects">
@@ -44,14 +40,14 @@ export default function ProjectByid() {
             </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>{id}</td>
-                <td>{title}</td>
-                <td>{cidade}</td>
-                <td>{estado}</td>
-                <td>{cost}</td>
-                <td>{deadline}</td>
-                <td>{done ? 'Finalizado' : 'Não finalizado'}</td>
+            <tr>
+                <td>{project?.id}</td>
+                <td>{project?.title}</td>
+                <td>{project.address?.cidade}</td>
+                <td>{project.address?.estado}</td>
+                <td>{project?.cost}</td>
+                <td>{project?.deadline}</td>
+                <td>{project?.done ? 'Finalizado' : 'Não finalizado'}</td>
               </tr>
             </tbody>
           </table>
