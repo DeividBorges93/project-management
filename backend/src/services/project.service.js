@@ -70,11 +70,15 @@ const getProjectById = async (id) => {
     },
   } = await axios.get(`https://viacep.com.br/ws/${zipCode}/json/`);
 
+  if (!cep) return { code: 400, message: 'zip code invalid' }
+  
   const formatedCep = Number(cep.replace('-', ''));
-
+  
   if (!formatedCep || formatedCep !== zipCode) {
     return { code: 400, message: 'zip code invalid' };
   }
+
+
   delete projectById.zipCode;
   projectById.address = {
     estado: uf,
