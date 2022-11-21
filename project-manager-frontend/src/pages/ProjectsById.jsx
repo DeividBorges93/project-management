@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import '../style/projectsByUsername.page.css';
+import '../style/projectsById.page.css';
 
 export default function ProjectByid() {
 
@@ -12,7 +12,7 @@ export default function ProjectByid() {
   const api_url = `http://localhost:3001/project/${id}`;
 
   const [project, setProject] = useState({});
-  
+
   useEffect( () => {
     
     axios.get(api_url, { headers: { username, Authorization } })
@@ -20,14 +20,42 @@ export default function ProjectByid() {
       setProject(response.data);
     })
     .catch((err) => console.log(err.message));
+
   }, []);
 
+  const toogleCheckbox = (event) => {
+    const id = event.target.attributes[1].value
+    const doneCheck_url = `http://localhost:3001/projects/${id}/done`;
+  
+    const data = {
+        done: true,
+      };
+    axios.patch(doneCheck_url, data, { headers: { username, Authorization } })
+      .then((response) => {
+        console.log(response.data);
+        document.location.reload()
+      })
+      .catch((err) => err.message)
+  };
+
+  const deleteProject = (event) => {
+    const id = event.target.attributes[1].value
+    const delete_url = `http://localhost:3001/projects/${id}`;
+  
+    axios.delete(delete_url, { headers: { username, Authorization } })
+    .then((response) => {
+      console.log(response.data);
+      document.location.reload()
+    })
+      .catch((err) => err.message);
+  };
+
   return (
-    <div className="container">
-      <div className="container-projects">
-        <div className="wrap-projects">
-          <h1 className='projects-title'>Projetos</h1>
-          <table>
+    <div className="container-ip">
+      <div className="container-iprojects">
+        <div className="wrap-iprojects">
+          <h1 className='iprojects-title'>Projetos</h1>
+          <table className='iprojects-table'>
             <thead>
             <tr>
               <th>ID</th>
@@ -48,6 +76,8 @@ export default function ProjectByid() {
                 <td>{project?.cost}</td>
                 <td>{project?.deadline}</td>
                 <td>{project?.done ? 'Finalizado' : 'Não finalizado'}</td>
+                <td>{<button type='button' id={id} onClick={toogleCheckbox}>concluido</button>}</td>
+                <td>{<button type='button' id={id} onClick={deleteProject}>deletar</button>}</td>
               </tr>
             </tbody>
           </table>
