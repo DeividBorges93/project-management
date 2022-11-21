@@ -9,7 +9,7 @@ const sequelize = new Sequelize(config.development);
 const createProject = async (req) => {
   const { error } = projectSchemas.validate(req.body);
   const {
-    title, zipCode, deadline, cost, done,
+    title, zipCode, deadline, cost
   } = req.body;
 
   const { username } = req.headers;
@@ -29,7 +29,7 @@ const createProject = async (req) => {
         title,
         zipCode,
         cost,
-        done,
+        done: false,
         deadline,
         username,
       },

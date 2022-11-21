@@ -1,24 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
-export default function ProjectsByUsername() {
-  
+export default function ProjectByid() {
+
   const username = JSON.parse(localStorage.getItem('username'));
   const Authorization = JSON.parse(localStorage.getItem('token'));
+  const { id } = useParams();
 
   const api_url = 'http://localhost:3001/projects';
 
-  const [projects, setProjects] = useState([]);
+  const [project, setProject] = useState();
 
   useEffect( () => {
     axios.get(api_url, { headers: { username, Authorization } })
-    .then((response) => { 
-      setProjects(response.data);
+    .then((response) => {
+      console.log(response.data, 'data');
+
+      setProject(response.data);
     })
     .catch((err) => console.log(err.message));
-    }, [username, Authorization]);
+  }, [api_url, username, Authorization]);
 
+  console.log(project, 'project');
 
+  const { title, cost, address: { cidade, estado }, deadline, done } = project;
+  
   return (
     <div className="container">
       <div className="container-projects">
@@ -29,25 +36,23 @@ export default function ProjectsByUsername() {
             <tr>
               <th>ID</th>
               <th>Título</th>
-              <th>CEP</th>
+              <th>Cidade</th>
+              <th>Estado</th>
               <th>Custo</th>
+              <th>Prazo</th>
               <th>Finalizado</th>
             </tr>
             </thead>
             <tbody>
-              {projects.map((project, i) => {
-                const { cost, done, id, title, zipCode } = project;
-                return (
-                  <tr key={i}>
-                    <td>{id}</td>
-                    <td>{title}</td>
-                    <td>{zipCode}</td>
-                    <td>{cost}</td>
-                    <td>{done ? 'Finalizado' : 'Não finalizado'}</td>
-
-                  </tr>
-                )
-              })}
+              <tr>
+                <td>{id}</td>
+                <td>{title}</td>
+                <td>{cidade}</td>
+                <td>{estado}</td>
+                <td>{cost}</td>
+                <td>{deadline}</td>
+                <td>{done ? 'Finalizado' : 'Não finalizado'}</td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -55,5 +60,3 @@ export default function ProjectsByUsername() {
     </div>
   )
 }
-
-

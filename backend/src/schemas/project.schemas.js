@@ -20,11 +20,6 @@ module.exports = Joi.object({
     .messages({
       'any.required': '400|"cost" is required',
     }),
-  done: Joi.boolean()
-    .required()
-    .messages({
-      'any.required': '400|"done" is required',
-    }),
   deadline: Joi.date()
     .required()
     .messages({
