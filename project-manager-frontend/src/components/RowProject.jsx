@@ -1,37 +1,10 @@
 import React, { useEffect, useRef, useState }from 'react';
 import axios from 'axios';
 
-const username = JSON.parse(localStorage.getItem('username'));
-const Authorization = JSON.parse(localStorage.getItem('token'));
-
-const deleteProject = (event) => {
-  const id = event.target.attributes[1].value
-  const delete_url = `http://localhost:3001/projects/${id}`;
-
-  axios.delete(delete_url, { headers: { username, Authorization } })
-  .then((response) => {
-    console.log(response.data);
-    document.location.reload()
-  })
-    .catch((err) => err.message);
-};
-
-const toogleCheckbox = (event) => {
-  const id = event.target.attributes[1].value
-  const doneCheck_url = `http://localhost:3001/projects/${id}/done`;
-
-  const data = {
-      done: true,
-    };
-  axios.patch(doneCheck_url, data, { headers: { username, Authorization } })
-    .then((response) => {
-      console.log(response.data);
-      document.location.reload()
-    })
-    .catch((err) => err.message)
-};
-
 export default function RowProject({ project }) {
+  const username = JSON.parse(localStorage.getItem('username'));
+  const Authorization = JSON.parse(localStorage.getItem('token'));
+
   const titleRef = useRef();
   const zipCodeRef = useRef();
   const costRef = useRef();
@@ -40,10 +13,8 @@ export default function RowProject({ project }) {
   const { cost, id, done, title, zipCode, deadline } = project;
 
   const projects_update_url = `http://localhost:3001/projects/${id}`;
-  
 
   const [nameBtn, setNameBtn] = useState('editar');
-
 
   useEffect(() => {
     titleRef.current.value = title;
@@ -51,6 +22,33 @@ export default function RowProject({ project }) {
     costRef.current.value = cost;
     deadlineRef.current.value = deadline;
   }, [])
+
+  const deleteProject = (event) => {
+    const id = event.target.attributes[1].value
+    const delete_url = `http://localhost:3001/projects/${id}`;
+  
+    axios.delete(delete_url, { headers: { username, Authorization } })
+    .then((response) => {
+      console.log(response.data);
+      document.location.reload()
+    })
+      .catch((err) => err.message);
+  };
+  
+  const toogleCheckbox = (event) => {
+    const id = event.target.attributes[1].value
+    const doneCheck_url = `http://localhost:3001/projects/${id}/done`;
+  
+    const data = {
+        done: true,
+      };
+    axios.patch(doneCheck_url, data, { headers: { username, Authorization } })
+      .then((response) => {
+        console.log(response.data);
+        document.location.reload()
+      })
+      .catch((err) => err.message)
+  };
 
   const editProject = (project) => {
     if (nameBtn === 'editar') {
