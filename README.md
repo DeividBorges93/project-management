@@ -5,7 +5,7 @@
  - No frontend uma aplicação que permite criar ususário, login e gerenciar projetos.
 
 ## Intuito do projeto
-  - Desafio técnico para uma vaga desenvolvedor back-end pleno.
+  - Criar uma aplicação que seja possível cadastrar usuários e gerenciar projetos cadastrados
   - Desenvolver um CRUD em node.js
   - Desenvolver frontend em Reactjs
 ## READMEs
