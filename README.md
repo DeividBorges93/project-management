@@ -1,4 +1,4 @@
-# Boas-vindas ao repositório do projeto CRUD-projects!
+# Boas-vindas ao repositório do projeto: Projects Management!
  - Uma API para gerenciamentos de projetos.
  - Permite a criação de usuário.
  - E aplica um CRUD de projetos.
